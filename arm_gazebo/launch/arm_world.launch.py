@@ -12,7 +12,7 @@ from ament_index_python.packages import get_package_share_directory
  
 def generate_launch_description():
     # Ottieni il percorso del file URDF dal pacchetto arm_description
-    urdf_file = os.path.join(get_package_share_directory('arm_description'), 'urdf', 'arm.urdf')
+    urdf_file = os.path.join(get_package_share_directory('arm_description'), 'urdf', 'arm.urdf.xacro')
  
     # Stampa il percorso del file URDF per debug
     print(f"Loading URDF from: {urdf_file}")
@@ -28,7 +28,7 @@ def generate_launch_description():
         package='robot_state_publisher',
         executable='robot_state_publisher',
         output='screen',
-        parameters=[{'robot_description': open(urdf_file).read(), 'use_sim_time': use_sim_time}] #prima era robot_description
+        parameters=[{'robot_description': Command(['xacro ', urdf_file])}] #open(urdf_file).read(), 'use_sim_time': use_sim_time}] #prima era robot_description
     )
 
     # Nodo per avviare Gazebo Ignition (gz sim)
