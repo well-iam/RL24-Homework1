@@ -67,12 +67,25 @@ def generate_launch_description():
         output='screen'
     )'''
 
+    bridge_camera = Node(
+        package='ros_ign_bridge',
+        executable='parameter_bridge',
+        arguments=[
+            '/camera@sensor_msgs/msg/Image@ignition.msgs.Image',
+            '/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
+            '--ros-args', 
+            '-r', '/camera:=/videocamera',
+        ],
+        output='screen'
+    )
+
 
     # Lista di nodi da avviare
     nodes_to_start = [
         robot_state_publisher_node,
         gazebo_ignition,
         spawn_robot_node,
+        bridge_camera
     ]
  
     return LaunchDescription(nodes_to_start)

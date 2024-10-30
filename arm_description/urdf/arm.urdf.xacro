@@ -4,11 +4,26 @@
 
   <!-- Include the hardware interface xacro file -->
   <xacro:include filename="$(find arm_description)/urdf/arm_hardware_interface.xacro"/>
+  <xacro:include filename="$(find arm_gazebo)/urdf/arm_camera.xacro"/>
 
   <material name="red">
     <color rgba="1 0 0 1"/>
   </material>
 
+  <material name="green">
+    <color rgba="0 1 0 1"/>
+  </material>
+
+  <material name="blue_debug">
+    <color rgba="0 0 1 0.5"/>
+  </material>
+
+  <link name="world"/>
+
+  <joint name="world_to_base_link_joint" type="fixed">
+      <parent link="world"/>
+      <child link="base_link"/>
+  </joint>
 
   <link name="base_link">
     <visual>
@@ -29,6 +44,23 @@
       <mass value="0.1"/>
       <inertia ixx="1.06682889e+08" ixy="0.0" ixz="0.0" iyy="9.92165844e+07" iyz="0.0" izz="1.26939175e+08"/>
     </inertial>    
+  </link>
+
+  <joint name="camera_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_link"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+  </joint>
+   
+  <link name="camera_link">
+    <visual>
+      <geometry>
+        <!--<box size="0.0000010 0.00000003 0.00000003"/>-->
+        <box size="0.02 0.008 0.008"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 -0.022"/>
+      <material name="green"/>
+    </visual>
   </link>
 
   <joint name="base_1_2" type="fixed">
@@ -421,18 +453,10 @@
       <plugin>ign_ros2_control/IgnitionSystem</plugin>
     </hardware>
 
-    <joint name="j0">
-      <xacro:PositionJointInterface/>
-    </joint>
-    <joint name="j1">
-      <xacro:PositionJointInterface/>
-    </joint>
-    <joint name="j2">
-      <xacro:PositionJointInterface/>
-    </joint>
-    <joint name="j3">
-      <xacro:PositionJointInterface/>
-    </joint>
+    <xacro:PositionJointInterface name="j0" initial_pos="1.0"/>
+    <xacro:PositionJointInterface name="j1" initial_pos="2.0"/>
+    <xacro:PositionJointInterface name="j2" initial_pos="-1.0"/>
+    <xacro:PositionJointInterface name="j3" initial_pos="-2.0"/>
 
   </ros2_control>
 
@@ -441,6 +465,28 @@
       <parameters>$(find arm_gazebo)/config/controllers.yaml</parameters>
       <controller_manager_prefix_node_name>controller_manager</controller_manager_prefix_node_name>
     </plugin>
+  </gazebo>
+
+  <xacro:arm_camera_plugin/>
+
+  <gazebo reference="camera_link">
+    <sensor name="camera" type="camera">
+      <camera>
+      <horizontal_fov>1.047</horizontal_fov>
+        <image>
+          <width>320</width>
+          <height>240</height>
+        </image>
+      <clip>
+        <near>0.1</near>
+        <far>100</far>
+      </clip>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+      <topic>camera</topic>
+    </sensor>
   </gazebo>
 
 </robot>
