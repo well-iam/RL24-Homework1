@@ -23,8 +23,7 @@ Run the RVIZ environment
 ```
 $ ros2 launch arm_description display.launch.py
 ```
-To 
-Open another terminal, source the setup files, and then run the Gazebo environment:
+To set the desired joint configuration, modify the 'command_msg.data' in the 'timer_callback' of the 'arm_controller_node.cpp' file inside the 'arm_control' package. Open another terminal, source the setup files, and then run the Gazebo environment:
 ```
 $ ros2 launch arm_gazebo arm_gazebo.launch.py
 ```
