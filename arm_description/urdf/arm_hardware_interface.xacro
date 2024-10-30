@@ -1,32 +1,7 @@
 <?xml version="1.0"?>
 
-<!-- arm_hardware_interface.xacro -->
-
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <!-- Macro for a hardware interface for a joint -->
-  <!--
-  <xacro:macro name="PositionJointInterface">
-    
-    <command_interface name="position">
-    </command_interface>  
-    <command_interface name="velocity">
-    </command_interface>  
-    <command_interface name="effort">
-    </command_interface>
-    
-    <state_interface name="position">
-      <param name="initial_value">0.0</param>
-    </state_interface>
-    <state_interface name="velocity">
-      <param name="initial_value">0.0</param>
-    </state_interface>
-    <state_interface name="effort">
-      <param name="initial_value">0.0</param>
-    </state_interface>
-
-  </xacro:macro>
-  -->
   <xacro:macro name="PositionJointInterface" params="name initial_pos">
        
     <joint name="${name}">

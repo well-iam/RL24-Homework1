@@ -29,7 +29,7 @@ endif()
 
 # Install the launch files
 install(
-  DIRECTORY launch config urdf
+  DIRECTORY launch urdf
   DESTINATION share/${PROJECT_NAME}
 )
 

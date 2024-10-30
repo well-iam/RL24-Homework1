@@ -2,16 +2,13 @@
 
 from launch import LaunchDescription
 from launch_ros.substitutions import FindPackageShare
-from launch.substitutions import PathJoinSubstitution, LaunchConfiguration
-from launch.conditions import IfCondition
+from launch.substitutions import PathJoinSubstitution
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.actions import DeclareLaunchArgument, LogInfo, IncludeLaunchDescription
+from launch.actions import IncludeLaunchDescription
 
 def generate_launch_description():
-    # Declare any launch arguments if needed
+    
     return LaunchDescription([
-        DeclareLaunchArgument('use_sim_time', default_value='true', 
-                              description='Use simulation (Gazebo) clock if true.'),
         
         # Include the arm_world.launch.py
         IncludeLaunchDescription(
@@ -25,13 +22,7 @@ def generate_launch_description():
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
                 PathJoinSubstitution([FindPackageShare('arm_control'), 'launch', 'arm_control.launch.py'])
-            ),
-            condition=IfCondition(LaunchConfiguration('use_sim_time'))
+            )
         ),
-        
-        # Optionally log the launch
-        LogInfo(
-            condition=IfCondition(LaunchConfiguration('use_sim_time')),
-            msg="Successfully launched Gazebo and Controllers."
-        )
+
     ])

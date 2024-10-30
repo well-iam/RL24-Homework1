@@ -38,11 +38,10 @@ private:
 
     void timer_callback()
     {
-      // Example: Publish a command to the first joint
+      // Publish a command to the joints
       std_msgs::msg::Float64MultiArray command_msg;
       command_msg.data = {1.0, 0.5, 0.0, 0.0}; // Desired positions for the joints
       position_command_publisher_->publish(command_msg);
-      //RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
     }
 
     rclcpp::TimerBase::SharedPtr timer_;

@@ -14,7 +14,7 @@ def generate_launch_description():
             executable='robot_state_publisher',
             name='robot_state_publisher',
             output='screen',
-            parameters=[{'robot_description': Command(['xacro ', urdf_file])}] #open(urdf_file).read()}]
+            parameters=[{'robot_description': Command(['xacro ', urdf_file])}]
         )
 
     rviz_node = Node(
