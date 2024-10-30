@@ -15,7 +15,7 @@ $ colcon build --packages-select arm_description arm_gazebo arm_control
 ```
 Source the setup files
 ```
-$ source install/setup.bash
+$ source ~/ros2_ws/install/setup.bash
 ```
 
 ## :white_check_mark: Usage
