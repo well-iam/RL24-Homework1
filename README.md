@@ -15,7 +15,7 @@ $ colcon build --packages-select arm_description arm_gazebo arm_control
 ```
 Source the setup files
 ```
-$ . install/setup.bash
+$ source install/setup.bash
 ```
 
 ## :white_check_mark: Usage
