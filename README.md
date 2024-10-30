@@ -5,7 +5,7 @@
 This package contains the developed code for the first homework of the Robotics Lab 2024/25 Course.
 
 ## :hammer: Build
-Clone this package in the `src` folder of your ROS 2 workspace.  If you want to only clone the content files without creating the repo folder, use
+Clone this package in the `src` folder of your ROS 2 workspace.  If you want to only clone the content files without creating the repo folder, use (only works if the src/ folder is empty)
 ```
 $ git clone https://github.com/well-iam/RL-RepoHomework1 .
 ```
