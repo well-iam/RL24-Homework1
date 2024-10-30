@@ -31,7 +31,7 @@ $ ros2 launch arm_gazebo arm_gazebo.launch.py
 
 ## :warning: Warning
 During the launch of the Gazebo environment you could face a list of errors similar to:
-```
+```diff
 - [GUI] [Err] [SystemPaths.cc:378] Unable to find file with URI [model://arm_description/meshes/base_link.stl]
 ```
 This is caused by the unsuccessful update of the GZ_SIM_RESOURCE_PATH environment variable. To fix the error use:
