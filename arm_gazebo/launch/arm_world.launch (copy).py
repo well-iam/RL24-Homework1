@@ -67,12 +67,25 @@ def generate_launch_description():
         output='screen'
     )'''
 
+    load_controller = Node( 
+        package="controller_manager", 
+        executable="spawner", 
+        arguments=["position_controller", "--controller-manager", "/controller_manager"], )
+
+    # Ensure controllers start after the robot is spawned
+    start_controllers = RegisterEventHandler(
+        event_handler=OnProcessExit(
+            target_action=spawn_robot_node,
+            on_exit=[load_controller]
+        )
+    )
 
     # Lista di nodi da avviare
     nodes_to_start = [
         robot_state_publisher_node,
         gazebo_ignition,
         spawn_robot_node,
+        start_controllers
     ]
  
     return LaunchDescription(nodes_to_start)

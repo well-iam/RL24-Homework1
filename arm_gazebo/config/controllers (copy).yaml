@@ -1,0 +1,14 @@
+joint_trajectory_controller:          # Name of the controller
+  ros__parameters:                    # Defines ROS parameters for the controller
+    joints:                           # List of joints to be controlled by this controller
+      - j0                       # Names of the joints, listed in the correct order
+      - j1
+      - j2
+      - j3
+    command_interfaces:               # Type of command interface for controlling the joints
+      - position                      # Here, 'position' control interface is specified
+    state_publish_rate: 100.0         # Rate (in Hz) at which joint states are published
+    action_monitor_rate: 20.0         # Rate (in Hz) at which action goals are monitored (defaults to 20)
+    allow_partial_joints_goal: true   # Allows commands with only a subset of joints to be processed
+    open_loop_control: true           # Enables open-loop control (doesn't use feedback to adjust command)
+    allow_integration_in_goal_trajectories: true  # Allows position goal trajectories to include integration of velocities
