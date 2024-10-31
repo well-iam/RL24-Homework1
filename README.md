@@ -2,7 +2,8 @@
 
 ## :package: About
 
-This package contains the developed code for the first homework of the Robotics Lab 2024/25 Course.
+This package contains the developed code for the first homework of the Robotics Lab 2024/25 Course. The authors of the package are:
+William Notaro, Chiara Panagrosso, Salvatore Piccolo, Roberto Rocco
 
 ## :hammer: Build
 Clone this package in the `src` folder of your ROS 2 workspace.  If you want to only clone the content files without creating the repo folder, use (only works if the src/ folder is empty)
