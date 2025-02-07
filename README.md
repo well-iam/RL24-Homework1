@@ -1,7 +1,14 @@
-# Homework1
+# Build your Robot Manipulator (Homework1)
 
 ## :package: About
+Goals:
+- Set a Rviz Visualization of the Robot using the URDF model of the robotic arm.
+- Optimize Collision meshes to improve simulation efficiency.
+- Install Controllers, Sensors and spawn the robot in the Gazebo Simulator.
+- Add a camera to the Robot and initialize the relative plugin
+- Control the Robot's joint positions using the position controller
 
+Tests and results are included in the report file, running controllers and verifying the robot's behavior using rqt_graph. 
 This package contains the developed code for the first homework of the Robotics Lab 2024/25 Course. The authors of the package are:
 William Notaro, Chiara Panagrosso, Salvatore Piccolo, Roberto Rocco
 
